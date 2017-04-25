@@ -76,6 +76,7 @@ public class GrizzlyLauncher {
 
         ServletRegistration registration = context.addServlet("EasyonboardServlet", EasyonboardServlet.class);
         registration.addMapping("/*");
+        registration.addMapping("./VAADIN");
         context.deploy(server);
 
         return server;
