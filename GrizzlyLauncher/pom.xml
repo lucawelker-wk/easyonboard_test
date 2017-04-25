@@ -25,6 +25,11 @@
             <artifactId>adminservice</artifactId>
             <version>${wk.easyonboard.version}</version>
         </dependency>
+        <dependency>
+            <groupId>wk.easyonboard</groupId>
+            <artifactId>easyonboard-ui</artifactId>
+            <version>${wk.easyonboard.version}</version>
+        </dependency>
     </dependencies>
 
 </project>

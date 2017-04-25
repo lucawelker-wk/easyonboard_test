@@ -21,6 +21,7 @@ public class GrizzlyLauncher {
     public static void main(String[] args) {
         try {
             startServices(getServiceConfiguration());
+            startVaadinServlet().start();
         } catch (InstantiationException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
@@ -54,6 +55,20 @@ public class GrizzlyLauncher {
 
 
         ResourceConfig configuration = new ResourceConfig(serviceInstance.getControllers())
+                .register(GensonJsonConverter.class);
+
+        return GrizzlyHttpServerFactory.createHttpServer(baseUri, configuration);
+    }
+
+    private static HttpServer startVaadinServlet() {
+
+        URI baseUri = UriBuilder.fromUri("http://localhost")
+                .port(8080)
+                .build();
+
+        // http://stackoverflow.com/questions/24489672/programmatically-add-servlet-to-embedded-grizzly
+        ResourceConfig configuration = new ResourceConfig()
+                .packages(true, "wk.easyonboard.ui")
                 .register(GensonJsonConverter.class);
 
         return GrizzlyHttpServerFactory.createHttpServer(baseUri, configuration);
