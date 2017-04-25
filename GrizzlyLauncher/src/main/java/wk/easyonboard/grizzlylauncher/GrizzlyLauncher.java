@@ -2,12 +2,16 @@ package wk.easyonboard.grizzlylauncher;
 
 import com.owlike.genson.ext.jaxrs.GensonJsonConverter;
 import org.glassfish.grizzly.http.server.HttpServer;
+import org.glassfish.grizzly.servlet.WebappContext;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
+import org.glassfish.jersey.servlet.ServletContainer;
 import wk.easyonboard.adminservice.AdminService;
 import wk.easyonboard.common.contracts.Launchable;
 import wk.easyonboard.gateway.Gateway;
+import wk.easyonboard.ui.EasyonboardServlet;
 
+import javax.servlet.ServletRegistration;
 import javax.ws.rs.core.UriBuilder;
 import java.io.IOException;
 import java.net.URI;
@@ -66,11 +70,14 @@ public class GrizzlyLauncher {
                 .port(8080)
                 .build();
 
-        // http://stackoverflow.com/questions/24489672/programmatically-add-servlet-to-embedded-grizzly
-        ResourceConfig configuration = new ResourceConfig()
-                .packages(true, "wk.easyonboard.ui")
-                .register(GensonJsonConverter.class);
+        HttpServer server = GrizzlyHttpServerFactory.createHttpServer(baseUri);
 
-        return GrizzlyHttpServerFactory.createHttpServer(baseUri, configuration);
+        WebappContext context = new WebappContext("EasyonboardingApp");
+
+        ServletRegistration registration = context.addServlet("EasyonboardServlet", EasyonboardServlet.class);
+        registration.addMapping("/*");
+        context.deploy(server);
+
+        return server;
     }
 }
