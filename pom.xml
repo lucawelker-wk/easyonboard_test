@@ -16,10 +16,13 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit.version>3.8.1</junit.version>
-        <jersey.version>2.25.1</jersey.version>
+        <jersey.version>2.25</jersey.version>
         <genson.version>1.4</genson.version>
         <guava.version>21.0</guava.version>
         <wk.easyonboard.version>1.0-SNAPSHOT</wk.easyonboard.version>
+        <javax.servlet.version>3.0.1</javax.servlet.version>
+        <vaadin.version>8.0.5</vaadin.version>
+        <vaadin.plugin.version>8.0.5</vaadin.plugin.version>
     </properties>
 
     <dependencies>
@@ -32,6 +35,11 @@
         <dependency>
             <groupId>org.glassfish.jersey.containers</groupId>
             <artifactId>jersey-container-grizzly2-http</artifactId>
+            <version>${jersey.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.containers</groupId>
+            <artifactId>jersey-container-servlet-core</artifactId>
             <version>${jersey.version}</version>
         </dependency>
         <dependency>
@@ -48,6 +56,36 @@
             <groupId>wk.easyonboard.common</groupId>
             <artifactId>common</artifactId>
             <version>${wk.easyonboard.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>${javax.servlet.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.vaadin</groupId>
+            <artifactId>vaadin-server</artifactId>
+            <version>${vaadin.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.vaadin</groupId>
+            <artifactId>vaadin-push</artifactId>
+            <version>${vaadin.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.vaadin</groupId>
+            <artifactId>vaadin-client-compiled</artifactId>
+            <version>${vaadin.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.vaadin</groupId>
+            <artifactId>vaadin-themes</artifactId>
+            <version>${vaadin.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.vaadin</groupId>
+            <artifactId>vaadin-bom</artifactId>
+            <version>${vaadin.version}</version>
         </dependency>
     </dependencies>
 

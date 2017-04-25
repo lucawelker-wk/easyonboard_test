@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/Common/Common.iml" filepath="$PROJECT_DIR$/Common/Common.iml" />
       <module fileurl="file://$PROJECT_DIR$/Gateway/Gateway.iml" filepath="$PROJECT_DIR$/Gateway/Gateway.iml" />
       <module fileurl="file://$PROJECT_DIR$/GrizzlyLauncher/GrizzlyLauncher.iml" filepath="$PROJECT_DIR$/GrizzlyLauncher/GrizzlyLauncher.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Ui/easyonboard-ui.iml" filepath="$PROJECT_DIR$/Ui/easyonboard-ui.iml" />
       <module fileurl="file://$PROJECT_DIR$/easyonboard_test.iml" filepath="$PROJECT_DIR$/easyonboard_test.iml" />
     </modules>
   </component>

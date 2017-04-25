@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="AdminService" />
         <module name="Common" />
+        <module name="easyonboard-ui" />
         <module name="Gateway" />
         <module name="GrizzlyLauncher" />
       </profile>
@@ -17,6 +18,7 @@
       <module name="adminservice" target="1.5" />
       <module name="common" target="1.5" />
       <module name="Common" target="1.5" />
+      <module name="easyonboard-ui" target="1.5" />
       <module name="easyonboard_test" target="1.5" />
       <module name="Gateway" target="1.5" />
       <module name="GrizzlyLauncher" target="1.5" />

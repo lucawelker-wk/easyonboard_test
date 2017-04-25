@@ -10,6 +10,10 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
+    <properties>
+        <jetty.version>9.4.4.v20170414</jetty.version>
+    </properties>
+
     <groupId>wk.easyonboard.grizzlylauncher</groupId>
     <artifactId>grizzlylauncher</artifactId>
     <version>${wk.easyonboard.version}</version>
@@ -25,6 +29,15 @@
             <artifactId>adminservice</artifactId>
             <version>${wk.easyonboard.version}</version>
         </dependency>
+        <dependency>
+            <groupId>wk.easyonboard</groupId>
+            <artifactId>easyonboard-ui</artifactId>
+            <version>${wk.easyonboard.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.grizzly</groupId>
+            <artifactId>grizzly-http-servlet</artifactId>
+            <version>2.3.30</version>
+        </dependency>
     </dependencies>
-
 </project>

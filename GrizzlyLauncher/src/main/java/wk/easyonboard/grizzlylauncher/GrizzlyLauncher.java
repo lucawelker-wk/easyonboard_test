@@ -2,12 +2,16 @@ package wk.easyonboard.grizzlylauncher;
 
 import com.owlike.genson.ext.jaxrs.GensonJsonConverter;
 import org.glassfish.grizzly.http.server.HttpServer;
+import org.glassfish.grizzly.servlet.WebappContext;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
+import org.glassfish.jersey.servlet.ServletContainer;
 import wk.easyonboard.adminservice.AdminService;
 import wk.easyonboard.common.contracts.Launchable;
 import wk.easyonboard.gateway.Gateway;
+import wk.easyonboard.ui.EasyonboardServlet;
 
+import javax.servlet.ServletRegistration;
 import javax.ws.rs.core.UriBuilder;
 import java.io.IOException;
 import java.net.URI;
@@ -21,6 +25,7 @@ public class GrizzlyLauncher {
     public static void main(String[] args) {
         try {
             startServices(getServiceConfiguration());
+            startVaadinServlet().start();
         } catch (InstantiationException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
@@ -57,5 +62,23 @@ public class GrizzlyLauncher {
                 .register(GensonJsonConverter.class);
 
         return GrizzlyHttpServerFactory.createHttpServer(baseUri, configuration);
+    }
+
+    private static HttpServer startVaadinServlet() {
+
+        URI baseUri = UriBuilder.fromUri("http://localhost")
+                .port(8080)
+                .build();
+
+        HttpServer server = GrizzlyHttpServerFactory.createHttpServer(baseUri);
+
+        WebappContext context = new WebappContext("EasyonboardingApp");
+
+        ServletRegistration registration = context.addServlet("EasyonboardServlet", EasyonboardServlet.class);
+        registration.addMapping("/*");
+        registration.addMapping("./VAADIN");
+        context.deploy(server);
+
+        return server;
     }
 }
